@@ -5,7 +5,7 @@
  */
 package za.ac.cput.frontendcarservicemanagement.view;
 
-import com.formdev.flatlaf.FlatDarkLaf;
+import com.formdev.flatlaf.FlatIntelliJLaf;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 
@@ -303,7 +303,7 @@ public class MainFrameForm extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    UIManager.setLookAndFeel(new FlatDarkLaf());
+                    UIManager.setLookAndFeel(new FlatIntelliJLaf());
                     new MainFrameForm().setVisible(true);
                 }catch (Exception ex) {
                     System.out.println(ex.getMessage());
