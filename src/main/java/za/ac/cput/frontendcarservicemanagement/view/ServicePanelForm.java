@@ -67,6 +67,7 @@ public class ServicePanelForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
     public JPanel getServicesPnl() {
         return servicesPnl;
     }

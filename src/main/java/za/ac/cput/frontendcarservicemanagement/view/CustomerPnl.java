@@ -5,7 +5,11 @@
  */
 package za.ac.cput.frontendcarservicemanagement.view;
 
+import java.util.ArrayList;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import za.ac.cput.frontendcarservicemanagement.client.CustomerClient;
+import za.ac.cput.frontendcarservicemanagement.entity.Customer;
 
 /**
  *
@@ -32,8 +36,8 @@ public class CustomerPnl extends JFrame {
         customerPnl = new javax.swing.JPanel();
         customerSidePnl = new javax.swing.JPanel();
         showCusBtn = new javax.swing.JButton();
-        cusomerBtn1 = new javax.swing.JButton();
-        cusomerBtn2 = new javax.swing.JButton();
+        addCustomerBtn = new javax.swing.JButton();
+        deleteCustomerBtn = new javax.swing.JButton();
         updateCustomer = new javax.swing.JButton();
         cusFormPnl = new javax.swing.JPanel();
         idLbl = new javax.swing.JLabel();
@@ -64,29 +68,29 @@ public class CustomerPnl extends JFrame {
             }
         });
 
-        cusomerBtn1.setBackground(new java.awt.Color(102, 102, 102));
-        cusomerBtn1.setText("Add");
-        cusomerBtn1.addMouseListener(new java.awt.event.MouseAdapter() {
+        addCustomerBtn.setBackground(new java.awt.Color(102, 102, 102));
+        addCustomerBtn.setText("Add");
+        addCustomerBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cusomerBtn1MouseClicked(evt);
+                addCustomerBtnMouseClicked(evt);
             }
         });
-        cusomerBtn1.addActionListener(new java.awt.event.ActionListener() {
+        addCustomerBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cusomerBtn1ActionPerformed(evt);
+                addCustomerBtnActionPerformed(evt);
             }
         });
 
-        cusomerBtn2.setBackground(new java.awt.Color(102, 102, 102));
-        cusomerBtn2.setText("Delete");
-        cusomerBtn2.addMouseListener(new java.awt.event.MouseAdapter() {
+        deleteCustomerBtn.setBackground(new java.awt.Color(102, 102, 102));
+        deleteCustomerBtn.setText("Delete");
+        deleteCustomerBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cusomerBtn2MouseClicked(evt);
+                deleteCustomerBtnMouseClicked(evt);
             }
         });
-        cusomerBtn2.addActionListener(new java.awt.event.ActionListener() {
+        deleteCustomerBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cusomerBtn2ActionPerformed(evt);
+                deleteCustomerBtnActionPerformed(evt);
             }
         });
 
@@ -111,23 +115,23 @@ public class CustomerPnl extends JFrame {
                 .addGap(14, 14, 14)
                 .addGroup(customerSidePnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(updateCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cusomerBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(deleteCustomerBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(showCusBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cusomerBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(addCustomerBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
         customerSidePnlLayout.setVerticalGroup(
             customerSidePnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(customerSidePnlLayout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addComponent(cusomerBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
-                .addComponent(cusomerBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
+                .addComponent(addCustomerBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addComponent(deleteCustomerBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
                 .addComponent(updateCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addGap(33, 33, 33)
                 .addComponent(showCusBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(100, 100, 100))
+                .addContainerGap(112, Short.MAX_VALUE))
         );
 
         idLbl.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -145,6 +149,7 @@ public class CustomerPnl extends JFrame {
         idLbl4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         idLbl4.setText("Address:");
 
+        idTxt.setEditable(false);
         idTxt.setBackground(new java.awt.Color(51, 51, 51));
 
         nameTxt.setBackground(new java.awt.Color(51, 51, 51));
@@ -161,19 +166,19 @@ public class CustomerPnl extends JFrame {
             cusFormPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(cusFormPnlLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(cusFormPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(idLbl2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(idLbl3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
-                    .addComponent(idLbl1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(idLbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(idLbl4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(cusFormPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(idLbl2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(idLbl3, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
+                    .addComponent(idLbl1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(idLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(idLbl4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(cusFormPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(idTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(emailTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lastNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(addressTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(cusFormPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(idTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
+                    .addComponent(nameTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
+                    .addComponent(emailTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
+                    .addComponent(lastNameTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
+                    .addComponent(addressTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
         cusFormPnlLayout.setVerticalGroup(
@@ -236,29 +241,55 @@ public class CustomerPnl extends JFrame {
     }
     
     
+    
+    
     private void showCusBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_showCusBtnMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_showCusBtnMouseClicked
 
     private void showCusBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showCusBtnActionPerformed
-        // TODO add your handling code here:
+        if(evt.getActionCommand().equals("All Customers")){
+             CustomerClient getAllCustomers = new CustomerClient();
+             showAllCustomers = new ShowAll();
+             showAllCustomers.setVisible(true);
+             
+            DefaultTableModel model = (DefaultTableModel) showAllCustomers.getjTable1().getModel();
+            model.setRowCount(0);
+            ArrayList<Customer> list = getAllCustomers.getAll();
+            Object[] rowData = new Object[5];
+            
+            for(int i = 0; i < getAllCustomers.getAll().size();i++){
+                rowData[0] = list.get(i).getCustId();
+                rowData[1] = list.get(i).getUserCredentials().getName();
+                rowData[2] = list.get(i).getUserCredentials().getLastName();
+                rowData[3] = list.get(i).getUserCredentials().getEmail();
+                rowData[4] = list.get(i).getUserCredentials().getAddress();
+                model.addRow(rowData);
+            }
+        }
     }//GEN-LAST:event_showCusBtnActionPerformed
 
-    private void cusomerBtn1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cusomerBtn1MouseClicked
+    private void addCustomerBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addCustomerBtnMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_cusomerBtn1MouseClicked
+    }//GEN-LAST:event_addCustomerBtnMouseClicked
 
-    private void cusomerBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cusomerBtn1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cusomerBtn1ActionPerformed
+    private void addCustomerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCustomerBtnActionPerformed
+        if(evt.getSource()==addCustomerBtn){
+            CustomerClient saveCustomer = new CustomerClient();
+            saveCustomer.saveCustomer(this.nameTxt.getText().toString(), 
+                    this.lastNameTxt.getText().toString(), 
+                    this.emailTxt.getText().toString(),
+                    this.addressTxt.getText().toString());
+        }
+    }//GEN-LAST:event_addCustomerBtnActionPerformed
 
-    private void cusomerBtn2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cusomerBtn2MouseClicked
+    private void deleteCustomerBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteCustomerBtnMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_cusomerBtn2MouseClicked
+    }//GEN-LAST:event_deleteCustomerBtnMouseClicked
 
-    private void cusomerBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cusomerBtn2ActionPerformed
+    private void deleteCustomerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteCustomerBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cusomerBtn2ActionPerformed
+    }//GEN-LAST:event_deleteCustomerBtnActionPerformed
 
     private void updateCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateCustomerMouseClicked
         // TODO add your handling code here:
@@ -287,6 +318,28 @@ public class CustomerPnl extends JFrame {
     public JTextField getNameTxt() {
         return nameTxt;
     }
+
+    public void setAddressTxt(JTextField addressTxt) {
+        this.addressTxt = addressTxt;
+    }
+
+    public void setEmailTxt(JTextField emailTxt) {
+        this.emailTxt = emailTxt;
+    }
+
+    public void setIdTxt(JTextField idTxt) {
+        this.idTxt = idTxt;
+    }
+
+    public void setLastNameTxt(JTextField lastNameTxt) {
+        this.lastNameTxt = lastNameTxt;
+    }
+
+    public void setNameTxt(JTextField nameTxt) {
+        this.nameTxt = nameTxt;
+    }
+    
+    
 
     
     /**
@@ -323,14 +376,16 @@ public class CustomerPnl extends JFrame {
             }
         });
     }
-
+    
+    private ShowAll showAllCustomers;
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addCustomerBtn;
     private javax.swing.JTextField addressTxt;
     private javax.swing.JPanel cusFormPnl;
-    private javax.swing.JButton cusomerBtn1;
-    private javax.swing.JButton cusomerBtn2;
     private javax.swing.JPanel customerPnl;
     private javax.swing.JPanel customerSidePnl;
+    private javax.swing.JButton deleteCustomerBtn;
     private javax.swing.JTextField emailTxt;
     private javax.swing.JLabel idLbl;
     private javax.swing.JLabel idLbl1;
