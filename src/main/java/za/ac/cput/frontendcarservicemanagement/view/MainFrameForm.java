@@ -39,13 +39,14 @@ public class MainFrameForm extends javax.swing.JFrame {
         bookingsBtn = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         logoPnl = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         switchPnl = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(846, 480));
+        setResizable(false);
         setSize(new java.awt.Dimension(720, 480));
         getContentPane().setLayout(null);
 
@@ -163,23 +164,15 @@ public class MainFrameForm extends javax.swing.JFrame {
 
         logoPnl.setBackground(new java.awt.Color(136, 149, 141));
 
-        jLabel1.setText("Logo");
-
         javax.swing.GroupLayout logoPnlLayout = new javax.swing.GroupLayout(logoPnl);
         logoPnl.setLayout(logoPnlLayout);
         logoPnlLayout.setHorizontalGroup(
             logoPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(logoPnlLayout.createSequentialGroup()
-                .addGap(58, 58, 58)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 167, Short.MAX_VALUE)
         );
         logoPnlLayout.setVerticalGroup(
             logoPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(logoPnlLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jLabel1)
-                .addContainerGap(24, Short.MAX_VALUE))
+            .addGap(0, 47, Short.MAX_VALUE)
         );
 
         switchPnl.setBackground(new java.awt.Color(221, 242, 235));
@@ -201,11 +194,9 @@ public class MainFrameForm extends javax.swing.JFrame {
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addComponent(logoPnl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(mainSidePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(mainPanelLayout.createSequentialGroup()
-                .addComponent(switchPnl, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(switchPnl, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         getContentPane().add(mainPanel);
@@ -321,7 +312,6 @@ public class MainFrameForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bookingsBtn;
     private javax.swing.JButton cusomerBtn;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
