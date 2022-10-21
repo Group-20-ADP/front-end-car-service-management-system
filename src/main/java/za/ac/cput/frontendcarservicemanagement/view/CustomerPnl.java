@@ -16,6 +16,7 @@ import za.ac.cput.frontendcarservicemanagement.entity.Customer;
  * @author kurtj
  */
 public class CustomerPnl extends JFrame {
+    CustomerClient customerClient = new CustomerClient();
 
     /**
      * Creates new form CustomerPnl
@@ -252,20 +253,6 @@ public class CustomerPnl extends JFrame {
              CustomerClient getAllCustomers = new CustomerClient();
              showAllCustomers = new ShowAll();
              showAllCustomers.setVisible(true);
-             
-            DefaultTableModel model = (DefaultTableModel) showAllCustomers.getjTable1().getModel();
-            model.setRowCount(0);
-            ArrayList<Customer> list = getAllCustomers.getAll();
-            Object[] rowData = new Object[5];
-            
-            for(int i = 0; i < getAllCustomers.getAll().size();i++){
-                rowData[0] = list.get(i).getCustId();
-                rowData[1] = list.get(i).getUserCredentials().getName();
-                rowData[2] = list.get(i).getUserCredentials().getLastName();
-                rowData[3] = list.get(i).getUserCredentials().getEmail();
-                rowData[4] = list.get(i).getUserCredentials().getAddress();
-                model.addRow(rowData);
-            }
         }
     }//GEN-LAST:event_showCusBtnActionPerformed
 
@@ -275,8 +262,7 @@ public class CustomerPnl extends JFrame {
 
     private void addCustomerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCustomerBtnActionPerformed
         if(evt.getSource()==addCustomerBtn){
-            CustomerClient saveCustomer = new CustomerClient();
-            saveCustomer.saveCustomer(this.nameTxt.getText().toString(), 
+            customerClient.saveCustomer(this.nameTxt.getText().toString(), 
                     this.lastNameTxt.getText().toString(), 
                     this.emailTxt.getText().toString(),
                     this.addressTxt.getText().toString());
