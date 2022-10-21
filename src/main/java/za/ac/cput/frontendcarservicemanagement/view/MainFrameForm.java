@@ -6,8 +6,7 @@
 package za.ac.cput.frontendcarservicemanagement.view;
 
 import com.formdev.flatlaf.FlatIntelliJLaf;
-import javax.swing.JPanel;
-import javax.swing.UIManager;
+import javax.swing.*;
 
 /**
  *
@@ -44,7 +43,7 @@ public class MainFrameForm extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(846, 480));
         setResizable(false);
         setSize(new java.awt.Dimension(720, 480));
@@ -227,7 +226,6 @@ public class MainFrameForm extends javax.swing.JFrame {
     private void serviceBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_serviceBtnActionPerformed
         if(evt.getActionCommand().equals("Services")){
             swapPanels(this.switchPnl, servicesPnl.getServicesPnl());
-            System.out.println("bN ORKS");
         }
     }//GEN-LAST:event_serviceBtnActionPerformed
 
@@ -238,7 +236,6 @@ public class MainFrameForm extends javax.swing.JFrame {
     private void cusomerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cusomerBtnActionPerformed
         if(evt.getActionCommand().equals("Customers")){
             swapPanels(this.switchPnl, custPnl.getCustomerPanel());
-            System.out.println("bN ORKS");
         }
     }//GEN-LAST:event_cusomerBtnActionPerformed
 
@@ -305,7 +302,7 @@ public class MainFrameForm extends javax.swing.JFrame {
     
     
     //iniialize in constructor
-    private CustomerPnl custPnl = new CustomerPnl();
+    private CustomerPanel custPnl = new CustomerPanel();
     private BookingPanelForm bookingPanel = new BookingPanelForm();
     private ServicePanelForm servicesPnl = new ServicePanelForm();
     private WaitListGUI waitListGUI = new WaitListGUI();

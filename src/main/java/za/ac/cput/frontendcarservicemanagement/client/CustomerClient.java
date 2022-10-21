@@ -58,6 +58,7 @@ public class CustomerClient {
     
     public static ArrayList<Customer> getAll(){
         try{
+            customerList.removeAll(customerList);
             final String url = "http://localhost:8088/customer/getAll";
             String responseBody = run(url);
             
@@ -69,10 +70,15 @@ public class CustomerClient {
                 Customer w = g.fromJson(customer.toString(), Customer.class);
                 customerList.add(w);
             }
+            System.out.println(customerList.toString());
         }catch(Exception e){
             System.out.println(e.getStackTrace());
         }
        return customerList;
+    }
+    
+    public static void main(String[] args) {
+        getAll();
     }
     
 }

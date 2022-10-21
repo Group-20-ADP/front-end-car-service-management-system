@@ -6,12 +6,15 @@
 package za.ac.cput.frontendcarservicemanagement.view;
 
 import javax.swing.JTable;
+import za.ac.cput.frontendcarservicemanagement.client.CustomerClient;
+import za.ac.cput.frontendcarservicemanagement.util.Helper;
 
 /**
  *
  * @author kurtj
  */
 public class ShowAll extends javax.swing.JFrame {
+    CustomerClient custClient = new CustomerClient();
 
     /**
      * Creates new form ShowAll
@@ -30,11 +33,13 @@ public class ShowAll extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        customerTbl = new javax.swing.JTable();
+        soutPnl = new javax.swing.JPanel();
+        showAllBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        customerTbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -49,7 +54,7 @@ public class ShowAll extends javax.swing.JFrame {
                 java.lang.Long.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, true, true, true, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -60,33 +65,51 @@ public class ShowAll extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
-            jTable1.getColumnModel().getColumn(0).setHeaderValue("ID");
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
-            jTable1.getColumnModel().getColumn(1).setHeaderValue("Name");
-            jTable1.getColumnModel().getColumn(2).setHeaderValue("Last Name");
-            jTable1.getColumnModel().getColumn(3).setResizable(false);
-            jTable1.getColumnModel().getColumn(3).setHeaderValue("Email");
-            jTable1.getColumnModel().getColumn(4).setResizable(false);
-            jTable1.getColumnModel().getColumn(4).setPreferredWidth(50);
-            jTable1.getColumnModel().getColumn(4).setHeaderValue("Address");
+        jScrollPane1.setViewportView(customerTbl);
+        if (customerTbl.getColumnModel().getColumnCount() > 0) {
+            customerTbl.getColumnModel().getColumn(0).setPreferredWidth(20);
+            customerTbl.getColumnModel().getColumn(1).setPreferredWidth(20);
+            customerTbl.getColumnModel().getColumn(2).setPreferredWidth(20);
+            customerTbl.getColumnModel().getColumn(3).setPreferredWidth(20);
+            customerTbl.getColumnModel().getColumn(4).setPreferredWidth(100);
         }
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 692, Short.MAX_VALUE)
+        getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
+
+        showAllBtn.setText("Show All");
+        showAllBtn.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        showAllBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        showAllBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showAllBtnActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout soutPnlLayout = new javax.swing.GroupLayout(soutPnl);
+        soutPnl.setLayout(soutPnlLayout);
+        soutPnlLayout.setHorizontalGroup(
+            soutPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(showAllBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 868, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+        soutPnlLayout.setVerticalGroup(
+            soutPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, soutPnlLayout.createSequentialGroup()
+                .addContainerGap(37, Short.MAX_VALUE)
+                .addComponent(showAllBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
         );
+
+        getContentPane().add(soutPnl, java.awt.BorderLayout.PAGE_END);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void showAllBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showAllBtnActionPerformed
+       if(evt.getSource()==showAllBtn){
+            Helper.setCustomerTableData(custClient, customerTbl);
+       }
+        
+    }//GEN-LAST:event_showAllBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -124,13 +147,15 @@ public class ShowAll extends javax.swing.JFrame {
     }
 
     public JTable getjTable1() {
-        return jTable1;
+        return customerTbl;
     }
     
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable customerTbl;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JButton showAllBtn;
+    private javax.swing.JPanel soutPnl;
     // End of variables declaration//GEN-END:variables
 }
