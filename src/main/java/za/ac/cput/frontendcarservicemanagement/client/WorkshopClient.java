@@ -30,10 +30,10 @@ public class WorkshopClient {
         }
     }
     
-    public void saveWorkshop(long workshopID, String name, String location) {
+    public void saveWorkshop(String name, String location) {
         try{
             final String url = "http://localhost:8088/workshop/create";
-            Workshop workshop = WorkshopFactory.createWorkshop(workshopID, name, location);
+            Workshop workshop = WorkshopFactory.createWorkshop(name, location);
             Gson g = new Gson();
             String jsonString = g.toJson(workshop);
             String r = post(url, jsonString);
