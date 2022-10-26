@@ -42,11 +42,11 @@ public class Helper {
             Object[] rowData = new Object[5];
             
             for(int i = 0; i < list.size();i++){
-                rowData[0] = list.get(i).getCustId();
-                rowData[1] = list.get(i).getUserCredentials().getName();
-                rowData[2] = list.get(i).getUserCredentials().getLastName();
-                rowData[3] = list.get(i).getUserCredentials().getEmail();
-                rowData[4] = list.get(i).getUserCredentials().getAddress();
+                rowData[0] = list.get(i).getId();
+                rowData[1] = list.get(i).getUser().getFirstName();
+                rowData[2] = list.get(i).getUser().getLastName();
+                rowData[3] = list.get(i).getUser().getEmail();
+                rowData[4] = list.get(i).getUser().getPassword();
                 model.addRow(rowData);
             }
     }
