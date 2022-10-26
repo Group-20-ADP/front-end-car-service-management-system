@@ -5,18 +5,17 @@ import za.ac.cput.frontendcarservicemanagement.entity.Vehicle;
 import za.ac.cput.frontendcarservicemanagement.util.Helper;
 
 public class VehicleFactory {
-    static Customer cust = Customer.builder().build();
 
-    public static Vehicle createVehicle(String make, String model, String year, Customer customer) {
-        Helper.checkStringParam(model, "Name");
-        Helper.checkStringParam(year, "Location");
-        cust = customer;
+    public static Vehicle createVehicle(String make, String model, String year, long customer_Id){
+        Helper.checkStringParam(make, "Make");
+        Helper.checkStringParam(model, "model");
+        Helper.checkStringParam(year, "year");
 
         return Vehicle.builder()
                 .make(make)
                 .model(model)
                 .year(year)
-                .customerId(customer)
+                .customer_Id(customer_Id)
                 .build();
     }
 }

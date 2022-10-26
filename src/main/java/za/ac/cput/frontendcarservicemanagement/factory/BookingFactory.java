@@ -1,18 +1,14 @@
 package za.ac.cput.frontendcarservicemanagement.factory;
 
 import za.ac.cput.frontendcarservicemanagement.entity.Booking;
-import za.ac.cput.frontendcarservicemanagement.util.Helper;
-
-import java.util.Date;
 
 public class BookingFactory {
-    public static Booking createBooking( String name, String location) {
-        Helper.checkStringParam(name, "Name");
-        Helper.checkStringParam(location, "Location");
-
+    public static Booking createBooking(String booking_status, long customer, long service, long vehicle){
         return Booking.builder()
-                .date(new Date())
-
+                .booking_status(booking_status)
+                .customer(customer)
+                .service(service)
+                .vehicle(vehicle)
                 .build();
     }
 }

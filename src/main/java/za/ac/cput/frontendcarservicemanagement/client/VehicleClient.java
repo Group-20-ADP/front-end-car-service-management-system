@@ -74,7 +74,7 @@ public class VehicleClient {
     public void saveVehicle(String make, String model, String year, Customer customer) {
         try{
             final String url = "http://localhost:8088/vehicle/create";
-            Vehicle vehicle = VehicleFactory.createVehicle(make, model, year, customer);
+            Vehicle vehicle = VehicleFactory.createVehicle(make, model, year, 1);
             Gson g = new Gson();
             String jsonString = g.toJson(vehicle);
             String r = post(url, jsonString);

@@ -5,9 +5,11 @@ import lombok.*;
 
 @Getter
 @ToString
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 public class Role {
-    private String roleName, description;
+    private long id;
+
+    private String name;
 }

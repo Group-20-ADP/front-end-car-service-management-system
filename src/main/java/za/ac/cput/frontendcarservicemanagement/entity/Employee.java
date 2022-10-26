@@ -1,15 +1,18 @@
 package za.ac.cput.frontendcarservicemanagement.entity;
 
-import java.io.Serializable;
 import lombok.*;
 
+import java.io.Serializable;
 
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 public class Employee implements Serializable {
-    private Long empId;
-    private UserCredentials user;
-    private Role role;
+
+    private Long id;
+
+    private User user;
+
+    private long role_Id;
 }
