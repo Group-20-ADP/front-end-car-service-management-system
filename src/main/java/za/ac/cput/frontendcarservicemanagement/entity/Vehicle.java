@@ -1,6 +1,5 @@
-/**Entity for VehicleService Entity
- Author: Manasseh Barnes (218009615)
- Milestone: Builder Pattern Implementation - first deliverable
+/**
+ author: aphiwe skeyi 217157785
  */
 package za.ac.cput.frontendcarservicemanagement.entity;
 
