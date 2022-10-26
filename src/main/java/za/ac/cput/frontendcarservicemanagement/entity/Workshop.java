@@ -2,8 +2,6 @@ package za.ac.cput.frontendcarservicemanagement.entity;
 
 /*Author
   Moegamad Nur Duncan 220014442
-* Builder Pattern for Workshop Entity
-* Date : 07 April 2022
 * */
 
 import lombok.*;
