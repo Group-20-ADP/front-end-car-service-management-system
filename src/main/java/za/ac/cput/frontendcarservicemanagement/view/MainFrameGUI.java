@@ -13,8 +13,9 @@ public class MainFrameGUI extends JFrame {
    //iniialize in constructor
     private CustomerPanel custPnl;
     private BookingPanelForm bookingPanel;
-    private ServicePanelForm servicesPnl;
+    private ServicePnl servicesPnl;
     private WaitListGUI waitListGUI;     
+    private VehiclePnl vehiclePnl;
     private JButton bookingsBtn;
     private JButton cusomerBtn;
     private JLabel jLabel1;
@@ -35,8 +36,9 @@ public class MainFrameGUI extends JFrame {
     
     
     public MainFrameGUI() {
+        vehiclePnl = new VehiclePnl();
         waitListGUI = new WaitListGUI(); 
-        servicesPnl = new ServicePanelForm();
+        servicesPnl = new ServicePnl();
         custPnl = new CustomerPanel();
         bookingPanel = new BookingPanelForm();
         mainPanel = new JPanel();
@@ -56,15 +58,17 @@ public class MainFrameGUI extends JFrame {
         jMenuBar1 = new JMenuBar();
         jMenu1 = new JMenu();
         jMenu2 = new JMenu();
+        
         setComponents();
+        
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        setSize(new Dimension(965, 550));
+        getContentPane().setLayout(null);
+        setLocationRelativeTo(null);
     }
                  
     private void setComponents() {
-        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new Dimension(846, 480));
-        setResizable(false);
-        getContentPane().setLayout(null);
-        setLocationRelativeTo(null);
+        
 
         mainPanel.setBackground(new Color(221, 242, 235));
 

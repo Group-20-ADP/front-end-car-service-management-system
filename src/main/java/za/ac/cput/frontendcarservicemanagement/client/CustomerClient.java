@@ -13,7 +13,6 @@ import okhttp3.Response;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import za.ac.cput.frontendcarservicemanagement.entity.Customer;
-import za.ac.cput.frontendcarservicemanagement.entity.Workshop;
 import za.ac.cput.frontendcarservicemanagement.factory.CustomerFactory;
 
 public class CustomerClient {
