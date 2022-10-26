@@ -44,7 +44,6 @@ public class MainFrameForm extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(846, 480));
         setResizable(false);
         setSize(new java.awt.Dimension(720, 480));
         getContentPane().setLayout(null);
@@ -53,7 +52,7 @@ public class MainFrameForm extends javax.swing.JFrame {
 
         mainSidePanel.setBackground(new java.awt.Color(136, 149, 141));
 
-        waitListBtn.setBackground(new java.awt.Color(102, 102, 102));
+        waitListBtn.setBackground(new java.awt.Color(51, 102, 255));
         waitListBtn.setText("Wait-list repairs");
         waitListBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -66,7 +65,7 @@ public class MainFrameForm extends javax.swing.JFrame {
             }
         });
 
-        cusomerBtn.setBackground(new java.awt.Color(102, 102, 102));
+        cusomerBtn.setBackground(new java.awt.Color(51, 102, 255));
         cusomerBtn.setText("Customers");
         cusomerBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -79,7 +78,7 @@ public class MainFrameForm extends javax.swing.JFrame {
             }
         });
 
-        serviceBtn.setBackground(new java.awt.Color(102, 102, 102));
+        serviceBtn.setBackground(new java.awt.Color(51, 102, 255));
         serviceBtn.setText("Services");
         serviceBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -92,7 +91,7 @@ public class MainFrameForm extends javax.swing.JFrame {
             }
         });
 
-        bookingsBtn.setBackground(new java.awt.Color(102, 102, 102));
+        bookingsBtn.setBackground(new java.awt.Color(51, 102, 255));
         bookingsBtn.setText("Bookings");
         bookingsBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -106,6 +105,7 @@ public class MainFrameForm extends javax.swing.JFrame {
         });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Logout");
 
         javax.swing.GroupLayout mainSidePanelLayout = new javax.swing.GroupLayout(mainSidePanel);
@@ -115,7 +115,7 @@ public class MainFrameForm extends javax.swing.JFrame {
             .addGroup(mainSidePanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(mainSidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(waitListBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+                    .addComponent(waitListBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(mainSidePanelLayout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -167,7 +167,7 @@ public class MainFrameForm extends javax.swing.JFrame {
         logoPnl.setLayout(logoPnlLayout);
         logoPnlLayout.setHorizontalGroup(
             logoPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 167, Short.MAX_VALUE)
+            .addGap(0, 186, Short.MAX_VALUE)
         );
         logoPnlLayout.setVerticalGroup(
             logoPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -186,7 +186,7 @@ public class MainFrameForm extends javax.swing.JFrame {
                     .addComponent(mainSidePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(logoPnl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(switchPnl, javax.swing.GroupLayout.DEFAULT_SIZE, 671, Short.MAX_VALUE)
+                .addComponent(switchPnl, javax.swing.GroupLayout.DEFAULT_SIZE, 652, Short.MAX_VALUE)
                 .addContainerGap())
         );
         mainPanelLayout.setVerticalGroup(
