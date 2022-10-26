@@ -4,15 +4,23 @@
  */
 package za.ac.cput.frontendcarservicemanagement.entity;
 
-import java.io.Serializable;
 import lombok.*;
+import java.io.Serializable;
 
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class Vehicle implements Serializable {
-    private Long vehicleID;
-    private String make, model, type, year;
-    private Customer customerId;
+    private Long id;
+
+    private String make;
+
+    private String model;
+
+    private String year;
+
+    private String type;
+
+    private long customer_Id;
 }

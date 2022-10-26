@@ -14,7 +14,10 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Workshop implements Serializable {
-    private long workshopId;
+
+    private long id;
+
     private String name;
+
     private String location;
 }
